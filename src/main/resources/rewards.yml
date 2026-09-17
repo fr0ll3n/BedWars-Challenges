@@ -1,0 +1,404 @@
+# BedWars Challenges rewards
+# Edit this file to customize the reward for EVERY challenge.
+# After editing run: /challenge reload
+#
+# Placeholders in commands and message:
+#   {player}  {uuid}  {challenge}  {challenge_name}
+#
+# items format: MATERIAL:AMOUNT   example: DIAMOND:3
+# commands run as console. Example: lp user {player} permission set rank.vip true
+
+auto-permission: true
+claim-item: GOLD_INGOT
+
+challenges:
+  renegade:
+    enabled: true
+    display:
+      - "Cat Death Cry"
+    permissions:
+      - "bwchallenges.reward.renegade"
+    commands: []
+    items: []
+    message: "&aYou claimed the Cat Death Cry reward!"
+
+  warmonger:
+    enabled: true
+    display:
+      - "Warrior Shopkeeper Skin"
+    permissions:
+      - "bwchallenges.reward.warmonger"
+    commands: []
+    items: []
+    message: "&aYou claimed the Warrior Shopkeeper Skin reward!"
+
+  selfish:
+    enabled: true
+    display:
+      - "Bite Projectile Trail"
+    permissions:
+      - "bwchallenges.reward.selfish"
+    commands: []
+    items: []
+    message: "&aYou claimed the Bite Projectile Trail reward!"
+
+  minimum_wage:
+    enabled: true
+    display:
+      - "Its Raining Gold Final Kill Effect"
+    permissions:
+      - "bwchallenges.reward.minimum_wage"
+    commands: []
+    items: []
+    message: "&aYou claimed the Its Raining Gold Final Kill Effect reward!"
+
+  assassin:
+    enabled: true
+    display:
+      - "Assassin Island Topper"
+    permissions:
+      - "bwchallenges.reward.assassin"
+    commands: []
+    items: []
+    message: "&aYou claimed the Assassin Island Topper reward!"
+
+  regular_shopper:
+    enabled: true
+    display:
+      - "Shopping Cart Island Topper"
+    permissions:
+      - "bwchallenges.reward.regular_shopper"
+    commands: []
+    items: []
+    message: "&aYou claimed the Shopping Cart Island Topper reward!"
+
+  invisible_shop:
+    enabled: true
+    display:
+      - "Invisible Villager Island Topper"
+    permissions:
+      - "bwchallenges.reward.invisible_shop"
+    commands: []
+    items: []
+    message: "&aYou claimed the Invisible Villager Island Topper reward!"
+
+  collector:
+    enabled: true
+    display:
+      - "Collector's Chest Island Topper"
+    permissions:
+      - "bwchallenges.reward.collector"
+    commands: []
+    items: []
+    message: "&aYou claimed the Collector's Chest Island Topper reward!"
+
+  woodworker:
+    enabled: true
+    display:
+      - "Lumberjack Shopkeeper Skin"
+    permissions:
+      - "bwchallenges.reward.woodworker"
+    commands: []
+    items: []
+    message: "&aYou claimed the Lumberjack Shopkeeper Skin reward!"
+
+  bridging_for_dummies:
+    enabled: true
+    display:
+      - "Bridging for Dummies Kill Messages"
+    permissions:
+      - "bwchallenges.reward.bridging_for_dummies"
+    commands: []
+    items: []
+    message: "&aYou claimed the Bridging for Dummies Kill Messages reward!"
+
+  toxic_rain:
+    enabled: true
+    display:
+      - "Toxic Rain Island Topper"
+    permissions:
+      - "bwchallenges.reward.toxic_rain"
+    commands: []
+    items: []
+    message: "&aYou claimed the Toxic Rain Island Topper reward!"
+
+  defuser:
+    enabled: true
+    display:
+      - "Defuser Shopkeeper Skin"
+    permissions:
+      - "bwchallenges.reward.defuser"
+    commands: []
+    items: []
+    message: "&aYou claimed the Defuser Shopkeeper Skin reward!"
+
+  lazy_miner:
+    enabled: true
+    display:
+      - "Lazy Miner Island Topper"
+    permissions:
+      - "bwchallenges.reward.lazy_miner"
+    commands: []
+    items: []
+    message: "&aYou claimed the Lazy Miner Island Topper reward!"
+
+  ultimate_uhc:
+    enabled: true
+    display:
+      - "Heartbleed Island Topper"
+    permissions:
+      - "bwchallenges.reward.ultimate_uhc"
+    commands: []
+    items: []
+    message: "&aYou claimed the Heartbleed Island Topper reward!"
+
+  sleight_of_hand:
+    enabled: true
+    display:
+      - "Magic Bunny Island Topper"
+    permissions:
+      - "bwchallenges.reward.sleight_of_hand"
+    commands: []
+    items: []
+    message: "&aYou claimed the Magic Bunny Island Topper reward!"
+
+  weighted_items:
+    enabled: true
+    display:
+      - "Anvil Smash Final Kill Effect"
+    permissions:
+      - "bwchallenges.reward.weighted_items"
+    commands: []
+    items: []
+    message: "&aYou claimed the Anvil Smash Final Kill Effect reward!"
+
+  social_distancing:
+    enabled: true
+    display:
+      - "Social Distance Kill Messages"
+    permissions:
+      - "bwchallenges.reward.social_distancing"
+    commands: []
+    items: []
+    message: "&aYou claimed the Social Distance Kill Messages reward!"
+
+  swordless:
+    enabled: true
+    display:
+      - "The End Projectile Trail"
+    permissions:
+      - "bwchallenges.reward.swordless"
+    commands: []
+    items: []
+    message: "&aYou claimed the The End Projectile Trail reward!"
+
+  marksman:
+    enabled: true
+    display:
+      - "Ballista Island Topper"
+    permissions:
+      - "bwchallenges.reward.marksman"
+    commands: []
+    items: []
+    message: "&aYou claimed the Ballista Island Topper reward!"
+
+  patriot:
+    enabled: true
+    display:
+      - "Patriotic Eagle Shopkeeper Skin"
+    permissions:
+      - "bwchallenges.reward.patriot"
+    commands: []
+    items: []
+    message: "&aYou claimed the Patriotic Eagle Shopkeeper Skin reward!"
+
+  stamina:
+    enabled: true
+    display:
+      - "Cake Walk Victory Dance"
+    permissions:
+      - "bwchallenges.reward.stamina"
+    commands: []
+    items: []
+    message: "&aYou claimed the Cake Walk Victory Dance reward!"
+
+  old_man:
+    enabled: true
+    display:
+      - "Old Man Kill Messages"
+    permissions:
+      - "bwchallenges.reward.old_man"
+    commands: []
+    items: []
+    message: "&aYou claimed the Old Man Kill Messages reward!"
+
+  capped_resources:
+    enabled: true
+    display:
+      - "Merchant Shopkeeper Skin"
+    permissions:
+      - "bwchallenges.reward.capped_resources"
+    commands: []
+    items: []
+    message: "&aYou claimed the Merchant Shopkeeper Skin reward!"
+
+  red_light_green_light:
+    enabled: true
+    display:
+      - "Traffic Light Island Topper"
+    permissions:
+      - "bwchallenges.reward.red_light_green_light"
+    commands: []
+    items: []
+    message: "&aYou claimed the Traffic Light Island Topper reward!"
+
+  slow_reflexes:
+    enabled: true
+    display:
+      - "Guardian Death Cry"
+    permissions:
+      - "bwchallenges.reward.slow_reflexes"
+    commands: []
+    items: []
+    message: "&aYou claimed the Guardian Death Cry reward!"
+
+  pacifist:
+    enabled: true
+    display:
+      - "Aura Victory Dance"
+    permissions:
+      - "bwchallenges.reward.pacifist"
+    commands: []
+    items: []
+    message: "&aYou claimed the Aura Victory Dance reward!"
+
+  master_assassin:
+    enabled: true
+    display:
+      - "Assassin's Blade Island Topper"
+    permissions:
+      - "bwchallenges.reward.master_assassin"
+    commands: []
+    items: []
+    message: "&aYou claimed the Assassin's Blade Island Topper reward!"
+
+  standing_tall:
+    enabled: true
+    display:
+      - "Portal Projectile Trail"
+    permissions:
+      - "bwchallenges.reward.standing_tall"
+    commands: []
+    items: []
+    message: "&aYou claimed the Portal Projectile Trail reward!"
+
+  protect_the_president:
+    enabled: true
+    display:
+      - "President Sloth Shopkeeper Skin"
+      - "Presidential Goons Island Topper"
+    permissions:
+      - "bwchallenges.reward.protect_the_president"
+    commands: []
+    items: []
+    message: "&aYou claimed the President Sloth Shopkeeper Skin reward!"
+
+  cant_touch_this:
+    enabled: true
+    display:
+      - "Can't Touch This Kill Messages"
+    permissions:
+      - "bwchallenges.reward.cant_touch_this"
+    commands: []
+    items: []
+    message: "&aYou claimed the Can't Touch This Kill Messages reward!"
+
+  wool_warrior:
+    enabled: true
+    display:
+      - "Woolnado Victory Dance"
+    permissions:
+      - "bwchallenges.reward.wool_warrior"
+    commands: []
+    items: []
+    message: "&aYou claimed the Woolnado Victory Dance reward!"
+
+  anchor:
+    enabled: true
+    display:
+      - "Anvil Ascension Victory Dance"
+    permissions:
+      - "bwchallenges.reward.anchor"
+    commands: []
+    items: []
+    message: "&aYou claimed the Anvil Ascension Victory Dance reward!"
+
+  no_dreaming:
+    enabled: true
+    display:
+      - "Lucid Kill Messages"
+    permissions:
+      - "bwchallenges.reward.no_dreaming"
+    commands: []
+    items: []
+    message: "&aYou claimed the Lucid Kill Messages reward!"
+
+  quick_maths:
+    enabled: true
+    display:
+      - "Quick Maths Island Topper"
+    permissions:
+      - "bwchallenges.reward.quick_maths"
+    commands: []
+    items: []
+    message: "&aYou claimed the Quick Maths Island Topper reward!"
+
+  blockrepellent_beds:
+    enabled: true
+    display:
+      - "Repellent Bed Island Topper"
+    permissions:
+      - "bwchallenges.reward.blockrepellent_beds"
+    commands: []
+    items: []
+    message: "&aYou claimed the Repellent Bed Island Topper reward!"
+
+  midnight:
+    enabled: true
+    display:
+      - "Midnight Projectile Trail"
+    permissions:
+      - "bwchallenges.reward.midnight"
+    commands: []
+    items: []
+    message: "&aYou claimed the Midnight Projectile Trail reward!"
+
+  beds_and_bloodlust:
+    enabled: true
+    display:
+      - "Bloodlust Final Kill Effect"
+    permissions:
+      - "bwchallenges.reward.beds_and_bloodlust"
+    commands: []
+    items: []
+    message: "&aYou claimed the Bloodlust Final Kill Effect reward!"
+
+  halved_and_doubled:
+    enabled: true
+    display:
+      - "Halved & Doubled Spray"
+    permissions:
+      - "bwchallenges.reward.halved_and_doubled"
+    commands: []
+    items: []
+    message: "&aYou claimed the Halved & Doubled Spray reward!"
+
+  beg_and_barter:
+    enabled: true
+    display:
+      - "Barter Shopkeeper Skin"
+    permissions:
+      - "bwchallenges.reward.beg_and_barter"
+    commands: []
+    items: []
+    message: "&aYou claimed the Barter Shopkeeper Skin reward!"

@@ -1,0 +1,447 @@
+# BedWars2023-Challenges 2.3.2
+
+# Full per-challenge rewards are in rewards.yml (created in the plugin folder).
+# Edit rewards.yml then run /challenge reload.
+# BedWars2023-Challenges 2.2.0
+# Put this plugin on BOTH the lobby (BWProxy2023) and every arena (BedWars2023) server.
+# Use the same MySQL database on every server so selected challenges follow the player.
+
+debug: false
+
+# Shared storage for lobby + arena servers.
+# YAML is local to each server (fine for single-server / multi-arena).
+# Enable MySQL when you run a proxy lobby and separate arena servers.
+database:
+  enabled: false
+  host: localhost
+  port: 3306
+  name: bedwars
+  username: root
+  password: password
+  ssl: false
+  table-prefix: bwchallenges_
+  pool-size: 4
+  # Extra JDBC params (leave empty unless you need them)
+  params: "characterEncoding=utf8&useUnicode=true&allowPublicKeyRetrieval=true"
+
+challenge:
+  selector:
+    enabled: true
+    # Bind this in your map-selector / lobby item addon:
+    #   command: challenge menu
+    # BedWars item handlers also registered: challenge, challenges, bwchallenges, bwchallenges-menu
+    attach-command: "challenge menu"
+    title: "Play Bed Wars"
+    item:
+      slot: 7
+      material: IRON_SWORD
+      name: "&aChallenges"
+      lore:
+        - "&7Looking for a new way to play"
+        - "&7Bed Wars? Enhance your gameplay"
+        - "&7with exciting challenges!"
+        - ""
+        - "&eClick to view challenges!"
+  menu:
+    size: 54
+    title: "&8Bed Wars Challenges"
+    item:
+      color: "&a"
+      category: "&bChallenge Rules:"
+      intro:
+        - "&cYou can disable Challenges from this"
+        - "&cmenu using the redstone on this page."
+      status:
+        activated: "&eClick to Activate!"
+        deactivated: "&cClick to Disable!"
+      none:
+        name: "NONE"
+      locked:
+        name: "&7&o????"
+        lore: "&cChallenge Locked!"
+      redstone:
+        name: "Disable Active Challenge"
+        state:
+          active: "&eClick to Disable!"
+          deactivate: "&cNo Active Challenge."
+      information:
+        name: "&aChallenge Information"
+      close:
+        name: "&cClose"
+    # Hypixel-style Go Back (center arrow). Runs as the player (no leading /).
+    go-back:
+      material: ARROW
+      name: "&aGo Back"
+      lore: "&7To Play Bed Wars"
+      # Default command when mode cannot be detected
+      command: "bedwars"
+      # Optional extra commands (always run after the primary, if set)
+      commands: []
+      # Per-mode commands used by Go Back after /challenge <mode>
+      # /challenge solo        -> modes.solo
+      # /challenge doubles     -> modes.doubles
+      # /challenge 3v3v3v3     -> modes.triples
+      # /challenge 4v4v4v4     -> modes.fours
+      lore-solo: "&7To Play Solo"
+      lore-doubles: "&7To Play Doubles"
+      lore-triples: "&7To Play 3v3v3v3"
+      lore-fours: "&7To Play 4v4v4v4"
+      modes:
+        solo: "bw join Solo"
+        doubles: "bw join Doubles"
+        triples: "bw join 3v3v3v3"
+        fours: "bw join 4v4v4v4"
+        3v3v3v3: "bw join 3v3v3v3"
+        4v4v4v4: "bw join 4v4v4v4"
+  messages:
+    menu:
+      activated: "&aActivated Challenge: &6{challenge}"
+      deactivated: "&cDeactivated Challenge: &6{challenge}"
+      arena-open: "&cYou can only open the menu in the lobby!"
+      not-unlocked: "&cYou have not unlocked this challenge yet!"
+      reward-claimed: "&aClaimed &6{challenge} &areward: &e{reward}"
+      reward-already-claimed: "&cYou already claimed this reward."
+      reward-not-completed: "&cComplete the challenge first!"
+    arena-top:
+      - "&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+      - "                                   &c&lCHALLENGE ACTIVE!"
+    arena-bottom:
+      - "&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    challenges:
+      renegade:
+        open_upgrade: "&cYou cannot use upgrades and traps during the &6Renegade &cchallenge"
+      warmonger:
+        buy_item: "&cYou cannot purchase this item during this challenge"
+      selfish:
+        open_chests: "&cThis chest is locked during the &6Selfish &cchallenge"
+        drop_item: "&cYou cannot drop anything during the &6Selfish &cchallenge"
+
+  rewards:
+    # First challenge is always unlocked. Completing one unlocks the next one only.
+    auto-permission: true
+    claim-item: GOLD_INGOT
+    # Per-challenge rewards. permissions are given by this plugin (and re-applied on join).
+    # commands run as console. Placeholders: {player} {uuid} {challenge} {challenge_name}
+    entries:
+      renegade:
+        display:
+          - "Cat Death Cry"
+        permissions:
+          - "bwchallenges.reward.renegade"
+        commands: []
+        message: "&aYou claimed the Cat Death Cry reward!"
+      warmonger:
+        display:
+          - "Warrior Shopkeeper Skin"
+        permissions:
+          - "bwchallenges.reward.warmonger"
+        commands: []
+        message: "&aYou claimed the Warrior Shopkeeper Skin reward!"
+      selfish:
+        display:
+          - "Bite Projectile Trail"
+        permissions:
+          - "bwchallenges.reward.selfish"
+        commands: []
+        message: "&aYou claimed the Bite Projectile Trail reward!"
+      minimum_wage:
+        display:
+          - "Its Raining Gold Final Kill Effect"
+        permissions:
+          - "bwchallenges.reward.minimum_wage"
+        commands: []
+        message: "&aYou claimed the Its Raining Gold Final Kill Effect reward!"
+      assassin:
+        display:
+          - "Assassin Island Topper"
+        permissions:
+          - "bwchallenges.reward.assassin"
+        commands: []
+        message: "&aYou claimed the Assassin Island Topper reward!"
+      regular_shopper:
+        display:
+          - "Shopping Cart Island Topper"
+        permissions:
+          - "bwchallenges.reward.regular_shopper"
+        commands: []
+        message: "&aYou claimed the Shopping Cart Island Topper reward!"
+      invisible_shop:
+        display:
+          - "Invisible Villager Island Topper"
+        permissions:
+          - "bwchallenges.reward.invisible_shop"
+        commands: []
+        message: "&aYou claimed the Invisible Villager Island Topper reward!"
+      collector:
+        display:
+          - "Collector's Chest Island Topper"
+        permissions:
+          - "bwchallenges.reward.collector"
+        commands: []
+        message: "&aYou claimed the Collector's Chest Island Topper reward!"
+      woodworker:
+        display:
+          - "Lumberjack Shopkeeper Skin"
+        permissions:
+          - "bwchallenges.reward.woodworker"
+        commands: []
+        message: "&aYou claimed the Lumberjack Shopkeeper Skin reward!"
+      bridging_for_dummies:
+        display:
+          - "Bridging for Dummies Kill Messages"
+        permissions:
+          - "bwchallenges.reward.bridging_for_dummies"
+        commands: []
+        message: "&aYou claimed the Bridging for Dummies Kill Messages reward!"
+      toxic_rain:
+        display:
+          - "Toxic Rain Island Topper"
+        permissions:
+          - "bwchallenges.reward.toxic_rain"
+        commands: []
+        message: "&aYou claimed the Toxic Rain Island Topper reward!"
+      defuser:
+        display:
+          - "Defuser Shopkeeper Skin"
+        permissions:
+          - "bwchallenges.reward.defuser"
+        commands: []
+        message: "&aYou claimed the Defuser Shopkeeper Skin reward!"
+      lazy_miner:
+        display:
+          - "Lazy Miner Island Topper"
+        permissions:
+          - "bwchallenges.reward.lazy_miner"
+        commands: []
+        message: "&aYou claimed the Lazy Miner Island Topper reward!"
+      ultimate_uhc:
+        display:
+          - "Heartbleed Island Topper"
+        permissions:
+          - "bwchallenges.reward.ultimate_uhc"
+        commands: []
+        message: "&aYou claimed the Heartbleed Island Topper reward!"
+      sleight_of_hand:
+        display:
+          - "Magic Bunny Island Topper"
+        permissions:
+          - "bwchallenges.reward.sleight_of_hand"
+        commands: []
+        message: "&aYou claimed the Magic Bunny Island Topper reward!"
+      weighted_items:
+        display:
+          - "Anvil Smash Final Kill Effect"
+        permissions:
+          - "bwchallenges.reward.weighted_items"
+        commands: []
+        message: "&aYou claimed the Anvil Smash Final Kill Effect reward!"
+      social_distancing:
+        display:
+          - "Social Distance Kill Messages"
+        permissions:
+          - "bwchallenges.reward.social_distancing"
+        commands: []
+        message: "&aYou claimed the Social Distance Kill Messages reward!"
+      swordless:
+        display:
+          - "The End Projectile Trail"
+        permissions:
+          - "bwchallenges.reward.swordless"
+        commands: []
+        message: "&aYou claimed the The End Projectile Trail reward!"
+      marksman:
+        display:
+          - "Ballista Island Topper"
+        permissions:
+          - "bwchallenges.reward.marksman"
+        commands: []
+        message: "&aYou claimed the Ballista Island Topper reward!"
+      patriot:
+        display:
+          - "Patriotic Eagle Shopkeeper Skin"
+        permissions:
+          - "bwchallenges.reward.patriot"
+        commands: []
+        message: "&aYou claimed the Patriotic Eagle Shopkeeper Skin reward!"
+      stamina:
+        display:
+          - "Cake Walk Victory Dance"
+        permissions:
+          - "bwchallenges.reward.stamina"
+        commands: []
+        message: "&aYou claimed the Cake Walk Victory Dance reward!"
+      old_man:
+        display:
+          - "Old Man Kill Messages"
+        permissions:
+          - "bwchallenges.reward.old_man"
+        commands: []
+        message: "&aYou claimed the Old Man Kill Messages reward!"
+      capped_resources:
+        display:
+          - "Merchant Shopkeeper Skin"
+        permissions:
+          - "bwchallenges.reward.capped_resources"
+        commands: []
+        message: "&aYou claimed the Merchant Shopkeeper Skin reward!"
+      red_light_green_light:
+        display:
+          - "Traffic Light Island Topper"
+        permissions:
+          - "bwchallenges.reward.red_light_green_light"
+        commands: []
+        message: "&aYou claimed the Traffic Light Island Topper reward!"
+      slow_reflexes:
+        display:
+          - "Guardian Death Cry"
+        permissions:
+          - "bwchallenges.reward.slow_reflexes"
+        commands: []
+        message: "&aYou claimed the Guardian Death Cry reward!"
+      pacifist:
+        display:
+          - "Aura Victory Dance"
+        permissions:
+          - "bwchallenges.reward.pacifist"
+        commands: []
+        message: "&aYou claimed the Aura Victory Dance reward!"
+      master_assassin:
+        display:
+          - "Assassin's Blade Island Topper"
+        permissions:
+          - "bwchallenges.reward.master_assassin"
+        commands: []
+        message: "&aYou claimed the Assassin's Blade Island Topper reward!"
+      standing_tall:
+        display:
+          - "Portal Projectile Trail"
+        permissions:
+          - "bwchallenges.reward.standing_tall"
+        commands: []
+        message: "&aYou claimed the Portal Projectile Trail reward!"
+      protect_the_president:
+        display:
+          - "President Sloth Shopkeeper Skin"
+          - "Presidential Goons Island Topper"
+        permissions:
+          - "bwchallenges.reward.protect_the_president"
+        commands: []
+        message: "&aYou claimed the President Sloth Shopkeeper Skin reward!"
+      cant_touch_this:
+        display:
+          - "Can't Touch This Kill Messages"
+        permissions:
+          - "bwchallenges.reward.cant_touch_this"
+        commands: []
+        message: "&aYou claimed the Can't Touch This Kill Messages reward!"
+      wool_warrior:
+        display:
+          - "Woolnado Victory Dance"
+        permissions:
+          - "bwchallenges.reward.wool_warrior"
+        commands: []
+        message: "&aYou claimed the Woolnado Victory Dance reward!"
+      anchor:
+        display:
+          - "Anvil Ascension Victory Dance"
+        permissions:
+          - "bwchallenges.reward.anchor"
+        commands: []
+        message: "&aYou claimed the Anvil Ascension Victory Dance reward!"
+      no_dreaming:
+        display:
+          - "Lucid Kill Messages"
+        permissions:
+          - "bwchallenges.reward.no_dreaming"
+        commands: []
+        message: "&aYou claimed the Lucid Kill Messages reward!"
+      quick_maths:
+        display:
+          - "Quick Maths Island Topper"
+        permissions:
+          - "bwchallenges.reward.quick_maths"
+        commands: []
+        message: "&aYou claimed the Quick Maths Island Topper reward!"
+      blockrepellent_beds:
+        display:
+          - "Repellent Bed Island Topper"
+        permissions:
+          - "bwchallenges.reward.blockrepellent_beds"
+        commands: []
+        message: "&aYou claimed the Repellent Bed Island Topper reward!"
+      midnight:
+        display:
+          - "Midnight Projectile Trail"
+        permissions:
+          - "bwchallenges.reward.midnight"
+        commands: []
+        message: "&aYou claimed the Midnight Projectile Trail reward!"
+      beds_and_bloodlust:
+        display:
+          - "Bloodlust Final Kill Effect"
+        permissions:
+          - "bwchallenges.reward.beds_and_bloodlust"
+        commands: []
+        message: "&aYou claimed the Bloodlust Final Kill Effect reward!"
+      halved_and_doubled:
+        display:
+          - "Halved & Doubled Spray"
+        permissions:
+          - "bwchallenges.reward.halved_and_doubled"
+        commands: []
+        message: "&aYou claimed the Halved & Doubled Spray reward!"
+      beg_and_barter:
+        display:
+          - "Barter Shopkeeper Skin"
+        permissions:
+          - "bwchallenges.reward.beg_and_barter"
+        commands: []
+        message: "&aYou claimed the Barter Shopkeeper Skin reward!"
+
+# ---------------------------------------------------------------------------
+# Sounds (1.8 names work: NOTE_PLING, NOTE_BASS, ORB_PICKUP, LEVEL_UP, ...)
+# volume: 0.0 – 1.0+
+# pitch: 100 = normal (1.0). Use 50 for lower, 150 for higher. Or use 0.5–2.0 directly.
+# Set sound: none to disable a sound.
+# ---------------------------------------------------------------------------
+sounds:
+  click:
+    sound: NOTE_PLING
+    volume: 1
+    pitch: 100
+  activate:
+    sound: LEVEL_UP
+    volume: 1
+    pitch: 120
+  deactivate:
+    sound: NOTE_BASS
+    volume: 1
+    pitch: 80
+  deny:
+    sound: VILLAGER_NO
+    volume: 1
+    pitch: 100
+  complete:
+    sound: LEVEL_UP
+    volume: 1
+    pitch: 100
+  fail:
+    sound: WITHER_HURT
+    volume: 1
+    pitch: 80
+  page:
+    sound: NOTE_PLING
+    volume: 0.7
+    pitch: 140
+  reward:
+    sound: ORB_PICKUP
+    volume: 1
+    pitch: 120
+  red-light:
+    sound: NOTE_PLING
+    volume: 1
+    pitch: 60
+  green-light:
+    sound: NOTE_PLING
+    volume: 1
+    pitch: 150

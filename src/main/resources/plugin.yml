@@ -1,0 +1,22 @@
+name: BedWars2023-Challenges
+version: 2.6.4
+main: dev.bwchallenges.ChallengesPlugin
+description: Hypixel-style Bed Wars challenges for BedWars2023 and BWProxy2023 with shared MySQL
+author: fr0ll3nCS
+api-version: 1.13
+softdepend:
+  - BedWars2023
+  - BWProxy2023
+  - PlaceholderAPI
+commands:
+  challenge:
+    description: Open the Bed Wars challenges menu
+    usage: /challenge [menu|solo|doubles|3v3v3v3|4v4v4v4|list|select|disable|info|open|reload|help]
+    aliases: [challenges, bwchallenge, bwc, bwchallenges]
+permissions:
+  bwchallenges.use:
+    description: Open and use the challenges menu
+    default: true
+  bwchallenges.admin:
+    description: Reload the challenges config and storage
+    default: op

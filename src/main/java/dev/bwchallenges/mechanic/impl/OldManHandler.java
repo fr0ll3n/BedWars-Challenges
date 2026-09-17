@@ -1,0 +1,36 @@
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  org.bukkit.Location
+ *  org.bukkit.entity.Player
+ */
+package dev.bwchallenges.mechanic.impl;
+
+import dev.bwchallenges.Challenge;
+import dev.bwchallenges.engine.ChallengeEngine;
+import dev.bwchallenges.engine.MatchSession;
+import dev.bwchallenges.mechanic.ChallengeHandler;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+
+public final class OldManHandler
+extends ChallengeHandler {
+    @Override
+    public Challenge challenge() {
+        return Challenge.OLD_MAN;
+    }
+
+    @Override
+    public void onSprint(ChallengeEngine challengeEngine, Player player, MatchSession matchSession) {
+        challengeEngine.fail(player, "You sprinted.");
+    }
+
+    @Override
+    public void onMove(ChallengeEngine challengeEngine, Player player, MatchSession matchSession, Location location, Location location2) {
+        if (player.isSprinting()) {
+            challengeEngine.fail(player, "You sprinted.");
+        }
+    }
+}
+
