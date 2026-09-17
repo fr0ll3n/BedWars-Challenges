@@ -34,24 +34,12 @@ Type: Spigot/Bukkit plugin
 Server - 1.8.8 to 1.13
 Type: Spigot/Bukkit plugin
 
-## Contributing
-
-Contributions are **very welcome**!
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-challenge`)
-3. Make your changes
-4. Test on a real BedWars2023 server
-5. Open a Pull Request
-
 ### Ideas
 
 - New challenges
 - Bug fixes / performance
 - Language files / translations
 - More reward types
-
-Feel free to open an issue first if you want to discuss a big change.
 
 ---
 
