@@ -1,20 +1,9 @@
-# BedWars2023-Challenges – Source Code
+# BedWars2023-Challenges
 
 **Author:** fr0ll3nCS
 **Version:** 2.6.4  
 
 Hypixel-style Bed Wars Challenges plugin for BedWars2023 and BWProxy2023 (both made by tomkeuper).
-
-> **Note:** The original bytecode was decompiled with CFR.  
-> Some local variable names / comments may be missing or reconstructed.  
-> The logic is fully intact and ready for development / contribution.
-
-## Requirements to Build
-
-- **Java 17+**
-- **Maven 3.8+**
-- Spigot / Paper API (downloaded automatically)
-- BedWars2023 API (optional – soft depend, may need local install)
 
 ---
 
@@ -25,6 +14,25 @@ On Hypixel, Bed Wars Challenges are special modifiers players can activate befor
 This plugin recreates that system for BedWars2023 networks – full GUI, 30 challenges (they are 9 more challenges but they don't work), shared MySQL support, and configurable rewards.
 
 ---
+
+## dependecies
+
+- BedWars2023
+- BWProxy2023
+
+## dependecies
+
+- PlaceholderAPI
+- ProtocolLib
+
+Server - 1.8.8 to 1.13
+Type: Spigot/Bukkit plugin
+
+
+## Server settings
+
+Server - 1.8.8 to 1.13
+Type: Spigot/Bukkit plugin
 
 ## Contributing
 
