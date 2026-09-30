@@ -48,7 +48,3 @@ Type: Spigot/Bukkit plugin
 MIT License
 
 **Author / Maintainer:** fr0ll3nCS
-
----
-
-*Made with ❤️ by fr0ll3nCS*
