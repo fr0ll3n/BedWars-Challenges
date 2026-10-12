@@ -22,10 +22,6 @@ This plugin recreates that system for BedWars2023 networks – full GUI, 30 chal
 - PlaceholderAPI
 - ProtocolLib
 
-Server - 1.8.8 to 1.13
-Type: Spigot/Bukkit plugin
-
-
 ## Server settings
 
 Server - 1.8.8 to 1.13
