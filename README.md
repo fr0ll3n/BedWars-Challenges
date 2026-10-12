@@ -13,7 +13,6 @@ On Hypixel, Bed Wars Challenges are special modifiers players can activate befor
 
 This plugin recreates that system for BedWars2023 networks – full GUI, 30 challenges (they are 9 more challenges but they don't work), shared MySQL support, and configurable rewards.
 
----
 
 ## dependecies
 
@@ -34,7 +33,6 @@ Type: Spigot/Bukkit plugin
 - Language files / translations
 - More reward types
 
----
 
 ## License
 
