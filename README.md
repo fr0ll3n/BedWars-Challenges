@@ -19,9 +19,6 @@ This plugin recreates that system for BedWars2023 networks – full GUI, 30 chal
 
 - BedWars2023
 - BWProxy2023
-
-## dependecies
-
 - PlaceholderAPI
 - ProtocolLib
 
